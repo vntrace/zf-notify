@@ -1,0 +1,114 @@
+<div id="header">
+	<nav class="navbar navbar-default" role="navigation">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		  <div class="navbar-header">
+		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#notify-bar">
+		      <span class="sr-only">Toggle navigation</span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		    </button>
+		    <a class="navbar-brand" href="#">GATE</a>
+		  </div>
+
+		  <!-- Collect the nav links, forms, and other content for toggling -->
+	  	<div class="collapse navbar-collapse" id="notify-bar">
+	  		<ul class="nav navbar-nav navbar-right">
+		      <li>
+		      	<h4><a href="#"><span class="label label-danger">Online: <em id="online-counter">0</em></span></a></h4>
+		      </li>
+		    </ul>
+	  	</div><!-- /.navbar-collapse -->
+	</nav>
+</div>
+<div id="wrap">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="container">
+				<div class="page-header"></div>
+				<div class="row">
+					<div class="col-md-12" id="post-feed">
+			    	</div>
+				</div>
+				<div class="row">
+			    	<div class="col-md-12" id="feed">
+			    	</div>
+			    </div>
+			</div>			
+		</div>
+		<div class="col-md-6">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<h3>Notification data</h3>
+					</div>
+					<div class="col-md-4">
+						<a href="#" id="build-notify" class="pull-right btn btn-primary">Build notify</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<form>
+							<textarea id="code">[]</textarea>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/template" id="feed-item">
+	<a href="#">
+		<img src="{{avatar}}"/>
+	</a>
+	<div class="story">
+		<span class="user-name">{{username}}</span>
+		<span class="user-content">{{message}}</span>
+		<span class="user-action">
+			<a href="#" class="btn-like">like</a>
+			<a href="#" class="btn-comment">comment</a>
+		</span>
+	</div>
+</script>
+
+<script type="text/template" id="notify-template">
+	<li class="_r">
+  		<a href="#">
+  			<span class="glyphicon glyphicon-user"></span>
+			<span class="label label-danger">[[if(_r > 0){]]{{_r}}[[ } ]]</span>
+  		</a>
+		</li>
+  	<li class="_m">
+  		<a href="#">
+  			<span class="glyphicon glyphicon-comment"></span>
+  			<span class="label label-danger">[[if(_m > 0){]]{{_m}}[[ } ]]</span>
+  		</a>
+		</li>
+  	<li class="_n">
+  		<a href="#">
+  			<span class="glyphicon glyphicon-bell"></span>
+  			<span class="label label-danger">[[if(_n > 0){]]{{_n}}[[ } ]]</span>
+  		</a>
+  	</li>
+</script>
+
+<script type="text/template" id="form-feed-template">
+	<form role="form" name="post-feed" class="form-inline">
+		<div class="form-group col-xs-1">
+			<img src="{{avatar}}">
+		</div>
+		<div class="form-group col-xs-8">
+			<textarea class="form-control" name="message" rows="2"></textarea>
+		</div>
+		<button type="submit" class="btn btn-default btn-post">Post</button>
+	</form>
+</script>
+
+<script type="text/template" id="notify-like-template">
+	<span><b>{{actor1.username}}</b> [[if(actor2 !== false){]] and <b>{{actor2.username}}</b> [[}]] liked {{owner}} {{type}} "{{content}}"</span>
+</script>
+
+<!-- Load main script -->
+<script src="/js/config.js"></script>
+<script src="/js/app.js"></script>
